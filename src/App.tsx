@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router";
 
+import Main from "./pages/Main";
+
 import Header from "./components/Header";
 
 const App: React.FC = (): JSX.Element => {
   useEffect(() => {
-    fetch("http://api.football-data.org/v2/teams/", {
+    fetch("http://api.football-data.org/v2/competitions/", {
       method: "GET",
       headers: { "X-Auth-Token": process.env.REACT_APP_SECRET_TOKEN || "" },
     })
@@ -17,7 +19,7 @@ const App: React.FC = (): JSX.Element => {
     <>
       <Header />
       <Switch>
-        <Route path='/' exact render={() => <p>welocme</p>} />
+        <Route path='/' exact component={Main} />
         <Route path='/leagues' render={() => <p>leagues</p>} />
         <Route path='/teams' render={() => <p>teams</p>} />
       </Switch>
