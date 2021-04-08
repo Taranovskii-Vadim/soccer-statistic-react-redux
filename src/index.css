@@ -5,3 +5,12 @@
 html {
   overflow-x: hidden;
 }
+
+.container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.container .container__content {
+  padding: 15px;
+}

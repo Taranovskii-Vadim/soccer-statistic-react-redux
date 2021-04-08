@@ -1,0 +1,24 @@
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cardRow:last-child {
+  margin-bottom: 0;
+}
+
+.cardRow .cardRow__countryInfo {
+  display: flex;
+  align-items: center;
+}
+
+.cardRow__paragraph {
+  margin-bottom: 0;
+}
+
+.cardRow .cardRow__flag {
+  width: 25px;
+  margin-right: 10px;
+}

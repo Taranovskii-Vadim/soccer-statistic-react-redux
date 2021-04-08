@@ -1,6 +1,8 @@
 import produce, { Draft } from "immer";
+
 import { STATUS } from "../../constants";
-import { TLeaguesState } from "./types";
+
+import { ELeagueTypes, TLeaguesAction, TLeaguesState } from "./types";
 
 const initialState: TLeaguesState = {
   data: [],
@@ -8,6 +10,13 @@ const initialState: TLeaguesState = {
 };
 
 export const leaguesReducer = produce(
-  (state: Draft<TLeaguesState>, action: any) => {},
+  (draft: Draft<TLeaguesState>, action: TLeaguesAction) => {
+    if (action.type === ELeagueTypes.SET_LEAGUES) {
+      draft.data = action.payload;
+      draft.status = STATUS.initial;
+    } else if (action.type === ELeagueTypes.SET_STATUS) {
+      draft.status = action.payload;
+    }
+  },
   initialState
 );
