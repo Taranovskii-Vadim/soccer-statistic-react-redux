@@ -6,7 +6,4 @@ const getBase = (state: IRootState): TLeaguesState => state.leagues;
 
 export const selectLeagues = createSelector(getBase, state => state.data);
 
-export const selectLeaguesStatus = createSelector(
-  getBase,
-  state => state.status
-);
+export const selectStatus = createSelector(getBase, state => state.status);

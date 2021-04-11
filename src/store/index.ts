@@ -6,14 +6,19 @@ import { IRootState } from "./types";
 
 // Reducers
 import { leaguesReducer } from "./models/leagues";
+import { teamsReducer } from "./models/teams";
 
 // Saga
 import leaguesSaga from "./models/leagues/saga";
+import teamsSaga from "./models/teams/saga";
 
-const rootReducer = combineReducers<IRootState>({ leagues: leaguesReducer });
+const rootReducer = combineReducers<IRootState>({
+  leagues: leaguesReducer,
+  teams: teamsReducer,
+});
 
 function* rootSaga() {
-  yield all([leaguesSaga()]);
+  yield all([leaguesSaga(), teamsSaga()]);
 }
 
 const sagaMiddleWare = createSagaMiddleWare();

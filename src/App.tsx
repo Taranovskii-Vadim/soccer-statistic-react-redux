@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 
 import Header from "./components/Header";
 import LeaguesList from "./pages/LeaguesList";
+import TeamsList from "./pages/TeamList";
 
 const App: React.FC = (): JSX.Element => {
   return (
@@ -12,7 +13,7 @@ const App: React.FC = (): JSX.Element => {
         {/* <p>Search</p> */}
         <Switch>
           <Route path='/' exact component={LeaguesList} />
-          <Route path='/teams' render={() => <p>teams</p>} />
+          <Route path='/teams' component={TeamsList} />
         </Switch>
       </div>
     </div>
