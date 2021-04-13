@@ -1,6 +1,7 @@
 import {
   ETeamsTypes,
   IFetchTeams,
+  ISearchTeams,
   ISetStatus,
   ISetTeams,
   TTeamsState,
@@ -12,6 +13,11 @@ export const fetchTeams = (): IFetchTeams => ({
 
 export const setTeams = (payload: TTeamsState["data"]): ISetTeams => ({
   type: ETeamsTypes.SET_TEAMS,
+  payload,
+});
+
+export const searchTeams = (payload: string): ISearchTeams => ({
+  type: ETeamsTypes.SEARCH_TEAMS,
   payload,
 });
 

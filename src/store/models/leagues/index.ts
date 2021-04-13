@@ -9,11 +9,17 @@ const initialState: TLeaguesState = {
   status: STATUS.initial,
 };
 
+let globalData: TLeaguesState["data"] = [];
+
 export const leaguesReducer = produce(
   (draft: Draft<TLeaguesState>, action: TLeaguesAction) => {
     if (action.type === ELeagueTypes.SET_LEAGUES) {
-      draft.data = action.payload;
+      draft.data = globalData = action.payload;
       draft.status = STATUS.initial;
+    } else if (action.type === ELeagueTypes.SEARCH_LEAGUES) {
+      draft.data = globalData.filter(item =>
+        item.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
     } else if (action.type === ELeagueTypes.SET_STATUS) {
       draft.status = action.payload;
     }

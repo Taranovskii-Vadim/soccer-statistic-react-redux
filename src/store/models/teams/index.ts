@@ -7,11 +7,17 @@ const initialState: TTeamsState = {
   status: STATUS.initial,
 };
 
+let globalData: TTeamsState["data"] = [];
+
 export const teamsReducer = produce(
   (draft: Draft<TTeamsState>, action: TTeamsAction) => {
     if (action.type === ETeamsTypes.SET_TEAMS) {
-      draft.data = action.payload;
+      draft.data = globalData = action.payload;
       draft.status = STATUS.initial;
+    } else if (action.type === ETeamsTypes.SEARCH_TEAMS) {
+      draft.data = globalData.filter(team =>
+        team.shortName.toLowerCase().includes(action.payload.toLowerCase())
+      );
     } else if (action.type === ETeamsTypes.SET_STATUS) {
       draft.status = action.payload;
     }

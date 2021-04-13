@@ -3,7 +3,7 @@ import { Card, Col } from "antd";
 import { NavLink } from "react-router-dom";
 
 interface IProps {
-  cardTitle: string;
+  cardTitle: React.ReactNode | string;
   calendarLink: string;
   children: React.ReactNode;
 }

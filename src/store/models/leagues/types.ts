@@ -35,10 +35,15 @@ export interface ILeague {
 export enum ELeagueTypes {
   FETCH_LEAGUES = "/leagues/FETCH_LEAGUES",
   SET_LEAGUES = "/leagues/SET_LEAGUES",
+  SEARCH_LEAGUES = "/leagues/SEARCH_LEAGUES",
   SET_STATUS = "/leagues/SET_STATUS",
 }
 
 export interface IFetchLeagues extends Action<ELeagueTypes.FETCH_LEAGUES> {}
+
+export interface ISearchLeagues extends Action<ELeagueTypes.SEARCH_LEAGUES> {
+  payload: string;
+}
 
 export interface ISetLeagues extends Action<ELeagueTypes.SET_LEAGUES> {
   payload: TLeaguesState["data"];
@@ -50,6 +55,6 @@ export interface ISetStatus extends Action<ELeagueTypes.SET_STATUS> {
 
 // Common
 
-export type TLeaguesAction = ISetLeagues | ISetStatus;
+export type TLeaguesAction = ISetLeagues | ISetStatus | ISearchLeagues;
 
 export type TLeaguesState = IState<ILeague[]>;

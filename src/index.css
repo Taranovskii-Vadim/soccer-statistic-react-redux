@@ -11,6 +11,13 @@ html {
   margin: auto;
 }
 
+.container .container__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .container .container__content {
   padding: 15px;
 }

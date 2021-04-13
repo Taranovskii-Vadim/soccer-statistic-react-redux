@@ -8,7 +8,7 @@ import { fetchTeams } from "../../store/models/teams/actions";
 import { selectStatus, selectTeams } from "../../store/models/teams/selectors";
 
 import Loader from "../../components/Loader";
-import InfoCard from "../../components/InfoCard";
+import TeamCard from "./components/TeamCard";
 
 const TeamsList: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -31,12 +31,7 @@ const TeamsList: React.FC = (): JSX.Element => {
       ) : (
         <Row gutter={[16, 16]}>
           {teams.map(team => (
-            <InfoCard
-              cardTitle={team.shortName}
-              calendarLink={`/teams/${team.id}`}
-            >
-              {team.name}
-            </InfoCard>
+            <TeamCard key={team.id} team={team} />
           ))}
         </Row>
       )}
