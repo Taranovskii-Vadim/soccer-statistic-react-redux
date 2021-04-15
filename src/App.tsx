@@ -18,17 +18,23 @@ const App: React.FC = (): JSX.Element => {
   // TODO сделать компонент empt
   // TODO адаптив для инпутов
   // TODO закрепить шапку на мобилке или вынести в бургер
-  // const { location } = useHistory();
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
   const onHandleSearch = (value: string) => {
     // TODO лучше через роутер сделать а не напрямую к бразуеру API
-    if (window.location.pathname === "/teams") {
+    const currentPath = window.location.pathname;
+    if (currentPath === "/teams") {
       dispatch(searchTeams(value));
     } else {
       dispatch(searchLeagues(value));
     }
+
+    history.push({
+      pathname: currentPath,
+      search: value ? `?search=${value}` : "",
+    });
   };
 
   // Сделаем задержку чтобы поиск отработал спустя delay после окончания ввода
